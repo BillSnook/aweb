@@ -1,12 +1,12 @@
 //
-//  power.cpp
+//  minion.cpp
 //  cweb
 //
 //  Created by William Snook on 4/28/18.
 //  Copyright © 2018 billsnook. All rights reserved.
 //
 
-#include "power.hpp"
+#include "minion.hpp"
 
 #include <unistd.h>			// close read write
 #include <stdio.h>			// printf
@@ -25,11 +25,11 @@
 #define ADRS 0x36
 
 
-Power::Power() {
+Minion::Minion() {
 	
 }
 
-int Power::getI2CReg( int reg ) {
+int Minion::getI2CReg( int reg ) {
 	
 	int rdValue = 0;
 #ifdef ON_PI
@@ -38,14 +38,14 @@ int Power::getI2CReg( int reg ) {
 	return rdValue;
 }
 
-void Power::putI2CReg( int reg, int newValue ) {
+void Minion::putI2CReg( int reg, int newValue ) {
 	
 #ifdef ON_PI
 	wiringPiI2CWriteReg16 (pi2c, reg, newValue);
 #endif  // ON_PI
 }
 
-char *Power::getUPS2() {
+char *Minion::getUPS2() {
 	
 	char *statsV = (char *)valloc( 128 );
 

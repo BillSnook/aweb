@@ -1,13 +1,13 @@
 //
-//  power.hpp
+//  minion.hpp
 //  cweb
 //
 //  Created by William Snook on 4/28/18.
 //  Copyright © 2018 billsnook. All rights reserved.
 //
 
-#ifndef power_hpp
-#define power_hpp
+#ifndef minion_hpp
+#define minion_hpp
 
 #ifdef ON_PI
 
@@ -18,12 +18,12 @@
 #endif  // ON_PI
 
 
-class Power {
+class Minion {
 
 	int	pi2c;
 
 public:
-	explicit Power();
+	explicit Minion();
 	
 	int getI2CReg( int reg );
 	void putI2CReg( int reg, int newValue );
@@ -32,4 +32,4 @@ public:
 
 };
 
-#endif /* power_hpp */
+#endif /* minion_hpp */

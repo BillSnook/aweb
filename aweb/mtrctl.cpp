@@ -20,7 +20,7 @@
 #include "sender.hpp"
 #include "listen.hpp"
 #include "threader.hpp"
-//#include "power.hpp"
+#include "minion.hpp"
 
 
 #define	PORT	5555
@@ -118,12 +118,12 @@ int main(int argc, const char * argv[]) {
 	threader = Threader();
 	threader.setupThreader();
 	
-//#ifdef ON_PI
-//	Power power = Power();
-//	char *pStatus = power.getUPS2();
-//	syslog(LOG_NOTICE, "Power status: %s", pStatus );
+#ifdef ON_PI
+	Minion minion = Minion();
+//	char *pStatus = minion.getUPS2();
+//	syslog(LOG_NOTICE, "Minion status: %s", pStatus );
 //	free( pStatus );
-//#endif
+#endif
 	
 	syslog(LOG_NOTICE, "mtrctl argc = %d", argc );
 	if ( argc == 2 ) {	// Should be sender as we pass in host name

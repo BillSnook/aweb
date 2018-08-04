@@ -13,6 +13,7 @@
 		A96D730E208402C200B98679 /* sender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A96D730C208402C200B98679 /* sender.cpp */; };
 		A96D7311208BD79600B98679 /* threader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A96D730F208BD79600B98679 /* threader.cpp */; };
 		A96D7314208C052B00B98679 /* commands.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A96D7312208C052B00B98679 /* commands.cpp */; };
+		A9E11C042116296F00CD8054 /* minion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9ABD77A209507D100B64F14 /* minion.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -50,8 +51,8 @@
 		A9ABD7752095078900B64F14 /* hardware.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = hardware.hpp; sourceTree = "<group>"; };
 		A9ABD777209507A400B64F14 /* speed.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = speed.cpp; sourceTree = "<group>"; };
 		A9ABD778209507A400B64F14 /* speed.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = speed.hpp; sourceTree = "<group>"; };
-		A9ABD77A209507D100B64F14 /* power.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = power.cpp; sourceTree = "<group>"; };
-		A9ABD77B209507D100B64F14 /* power.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = power.hpp; sourceTree = "<group>"; };
+		A9ABD77A209507D100B64F14 /* minion.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = minion.cpp; sourceTree = "<group>"; };
+		A9ABD77B209507D100B64F14 /* minion.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = minion.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,8 +102,8 @@
 				A9ABD7752095078900B64F14 /* hardware.hpp */,
 				A9ABD777209507A400B64F14 /* speed.cpp */,
 				A9ABD778209507A400B64F14 /* speed.hpp */,
-				A9ABD77A209507D100B64F14 /* power.cpp */,
-				A9ABD77B209507D100B64F14 /* power.hpp */,
+				A9ABD77A209507D100B64F14 /* minion.cpp */,
+				A9ABD77B209507D100B64F14 /* minion.hpp */,
 				A91D0AD4209958DF00EA1DB4 /* filer.cpp */,
 				A91D0AD5209958DF00EA1DB4 /* filer.hpp */,
 				A96D730B2083F34700B98679 /* README.md */,
@@ -172,6 +173,7 @@
 				A96D730E208402C200B98679 /* sender.cpp in Sources */,
 				A96D730A2083E80A00B98679 /* listen.cpp in Sources */,
 				A96D7314208C052B00B98679 /* commands.cpp in Sources */,
+				A9E11C042116296F00CD8054 /* minion.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
