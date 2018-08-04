@@ -134,10 +134,10 @@ void Threader::runThread( void *arguments ) {
 		if ( ! threadQueue.empty() ) {
 			nextThreadControl = threadQueue.front();
 			threadQueue.pop();
-			syslog(LOG_NOTICE, "In runThread with entry in threadQueue for thread type %s", nextThreadControl.description() );
+			syslog(LOG_NOTICE, "In runThread with thread type %s", nextThreadControl.description() );
 			foundThread = true;
 		} else {
-			syslog(LOG_NOTICE, "In runThread with no entries in threadQueue" );
+			syslog(LOG_NOTICE, "In runThread with no entries in queue" );
 		}
 	} catch(...) {
 		syslog(LOG_NOTICE, "In runThread and threadQueue pop failure occured" );
