@@ -71,14 +71,14 @@ int Minion::testRead() {
 	int got = 0;
 #ifdef ON_PI
 	got = getI2CReg();
-	syslog(LOG_NOTICE, "Read %c from I2C device", got);
+	syslog(LOG_NOTICE, "Read 0x%X from I2C device", got);
 #endif // ON_PI
 	
 	return got;
 }
 
-void Minion::testWrite(char *data) {
+void Minion::testWrite(int data) {
 	
-	putI2CReg(0x42);
+	putI2CReg(data);
 
 }

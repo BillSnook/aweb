@@ -84,8 +84,7 @@ void Commander::serviceCommand( char *command, int socket ) {	// Main command de
 
 		case 'B':
 		case 'b': {
-			memcpy( msg, "testWrite", 9 );
-			minion.testWrite( msg );
+			minion.testWrite( 0x43 );
 			syslog(LOG_NOTICE, "Wrote data" );
 		}
 			break;

@@ -32,7 +32,7 @@ public:
 	void putI2CReg( int newValue );
 	
 	int	testRead();
-	void testWrite(char *data);
+	void testWrite(int data);
 
 };
 
