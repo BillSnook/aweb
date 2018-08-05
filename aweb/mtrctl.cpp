@@ -124,7 +124,7 @@ int main(int argc, const char * argv[]) {
 	minion = Minion();
 	bool result = minion.setupMinion( 8 );
 //	char *pStatus = minion.getUPS2();
-//	syslog(LOG_NOTICE, "Minion status: %s", pStatus );
+	syslog(LOG_NOTICE, "Minion setup as Master to Slave on I2C address 8" );
 //	free( pStatus );
 #endif
 	
