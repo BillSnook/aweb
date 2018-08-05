@@ -13,6 +13,7 @@
 #include <getopt.h>
 #include <string.h>
 #include <stdlib.h>
+#include <syslog.h>
 
 #include "minion.hpp"
 
