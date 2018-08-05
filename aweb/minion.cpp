@@ -85,7 +85,7 @@ int Minion::getI2CReg() {
 	int length;
 
 	//----- READ BYTES -----
-	length = 4;			// Number of bytes to read
+	length = 7;			// Number of bytes to read
 	if (read(file_i2c, buffer, length) != length) {		//read() returns the number of bytes actually read, if it doesn't match then an error occurred (e.g. no response from the device)
 		
 		//ERROR HANDLING: i2c transaction failed
