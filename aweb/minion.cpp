@@ -66,21 +66,15 @@ void Minion::putI2CReg( int newValue ) {
 #endif  // ON_PI
 }
 
-char *Minion::testRead() {
+int Minion::testRead() {
 	
-	char *statsV = (char *)malloc( 32 );
-
-//	putI2CReg( 0, 0x42 );
-//	usleep( 1 );
-	
-	char got = getI2CReg();
+	int got = 0;
+#ifdef ON_PI
+	got = getI2CReg();
 	syslog(LOG_NOTICE, "Read %c from I2C device", got);
-	statsV[0] = got;
-//	statsV[1] = 0x0A;
-
-//#endif // ON_PI
+#endif // ON_PI
 	
-	return statsV;
+	return got;
 }
 
 void Minion::testWrite(char *data) {

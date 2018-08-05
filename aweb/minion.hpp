@@ -31,7 +31,7 @@ public:
 	int getI2CReg();
 	void putI2CReg( int newValue );
 	
-	char *testRead();
+	int	testRead();
 	void testWrite(char *data);
 
 };

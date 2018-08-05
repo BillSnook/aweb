@@ -77,9 +77,8 @@ void Commander::serviceCommand( char *command, int socket ) {	// Main command de
 			
 		case 'A':
 		case 'a': {
-			char *readData = minion.testRead();
-			syslog(LOG_NOTICE, "Read data: %c", readData[0] );
-			free( readData );
+			int data = minion.testRead();
+			syslog(LOG_NOTICE, "Read data: %d", data );
 		}
 			break;
 
