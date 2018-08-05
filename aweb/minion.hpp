@@ -21,6 +21,7 @@
 class Minion {
 
 	int	pi2c;
+	int file_i2c;
 
 public:
 	explicit Minion();
