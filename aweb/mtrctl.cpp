@@ -25,7 +25,7 @@
 
 #define	PORT	5555
 
-#define MAKE_DAEMON
+//#define MAKE_DAEMON
 
 Threader	threader;
 
