@@ -28,8 +28,8 @@ public:
 	bool setupMinion( int i2CAddr );
 	bool resetMinion();
 
-	int getI2CReg( int reg );
-	void putI2CReg( int reg, int newValue );
+	int getI2CReg();
+	void putI2CReg( int newValue );
 	
 	char *testRead();
 	void testWrite(char *data);

@@ -50,19 +50,19 @@ bool Minion::resetMinion() {
 	return true;
 }
 
-int Minion::getI2CReg( int reg ) {
+int Minion::getI2CReg() {
 	
 	int rdValue = 0;
 #ifdef ON_PI
-	rdValue = wiringPiI2CReadReg8 (pi2c, reg);
+	rdValue = wiringPiI2CRead(pi2c);
 #endif  // ON_PI
 	return rdValue;
 }
 
-void Minion::putI2CReg( int reg, int newValue ) {
+void Minion::putI2CReg( int newValue ) {
 	
 #ifdef ON_PI
-	wiringPiI2CWriteReg8 (pi2c, reg, newValue);
+	wiringPiI2CWrite(pi2c, newValue);
 #endif  // ON_PI
 }
 
@@ -73,7 +73,7 @@ char *Minion::testRead() {
 //	putI2CReg( 0, 0x42 );
 //	usleep( 1 );
 	
-	char got = getI2CReg( 0 );
+	char got = getI2CReg();
 	syslog(LOG_NOTICE, "Read %c from I2C device", got);
 	statsV[0] = got;
 //	statsV[1] = 0x0A;
@@ -85,6 +85,6 @@ char *Minion::testRead() {
 
 void Minion::testWrite(char *data) {
 	
-	putI2CReg(8, 0x42);
+	putI2CReg(0x42);
 
 }
