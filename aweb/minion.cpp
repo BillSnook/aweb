@@ -6,8 +6,6 @@
 //  Copyright © 2018 billsnook. All rights reserved.
 //
 
-#include "minion.hpp"
-
 #include <unistd.h>			// close read write
 #include <stdio.h>			// printf
 #include <fcntl.h>			// open
@@ -15,6 +13,8 @@
 #include <getopt.h>
 #include <string.h>
 #include <stdlib.h>
+
+#include "minion.hpp"
 
 //  SBC HAT - GPIO-controlled
 //  Raspi UPS HAT V1.0
@@ -27,6 +27,26 @@
 
 Minion::Minion() {
 	
+}
+
+bool Minion::setupMinion( int i2cAddr ) {
+	
+	pi2c = i2cAddr;
+#ifdef ON_PI
+	int device = wiringPiI2CSetup( pi2c );
+	if ( device < 0 ) {
+		syslog(LOG_NOTICE, "Failed opening I2C device at address: %d", pi2c);
+		return false;
+	}
+	syslog(LOG_NOTICE, "Opened I2C device at address: %d, device number: %d", pi2c, device);
+#endif  // ON_PI
+
+	return true;
+}
+
+bool Minion::resetMinion() {
+	
+	return true;
 }
 
 int Minion::getI2CReg( int reg ) {
@@ -45,29 +65,44 @@ void Minion::putI2CReg( int reg, int newValue ) {
 #endif  // ON_PI
 }
 
-char *Minion::getUPS2() {
+char *Minion::testRead() {
 	
-	char *statsV = (char *)valloc( 128 );
+	char *statsV = (char *)malloc( 32 );
 
-#ifdef ON_PI
-	char statsC[64];
-	pi2c = wiringPiI2CSetup( ADRS );
+//#ifdef ON_PI
+//	char statsC[64];
+//	pi2c = wiringPiI2CSetup( ADRS );
+//
+//	int v = getI2CReg( VREG );
+//	int lo = (v >> 8) & 0x00FF;
+//	int hi = (v << 8) & 0xFF00;
+//	v = hi + lo;
+//	sprintf( statsV, "%fV (%d) ",(((float)v)* 78.125 / 1000000.0), v);
+//
+//	int c = getI2CReg( CREG );
+//	close( pi2c );
+//
+//	lo = (c >> 8) & 0x00FF;
+//	hi = (c << 8) & 0xFF00;
+//	c = hi + lo;
+//	sprintf( statsC, "%f%% (%d)",(((float)c) / 256.0), c);
+//	strcat( statsV, statsC );
 	
-	int v = getI2CReg( VREG );
-	int lo = (v >> 8) & 0x00FF;
-	int hi = (v << 8) & 0xFF00;
-	v = hi + lo;
-	sprintf( statsV, "%fV (%d) ",(((float)v)* 78.125 / 1000000.0), v);
+	//
+	putI2CReg( 0, 0x41 );
 	
-	int c = getI2CReg( CREG );
-	close( pi2c );
+	usleep( 1 );
 	
-	lo = (c >> 8) & 0x00FF;
-	hi = (c << 8) & 0xFF00;
-	c = hi + lo;
-	sprintf( statsC, "%f%% (%d)",(((float)c) / 256.0), c);
-	strcat( statsV, statsC );
-#endif // ON_PI
+	int got = getI2CReg( 1 );
+//	syslog(LOG_NOTICE, "Read %d from I2C device", got);
+	statsV[0] = got;
+	statsV[1] = 0x0A;
+
+//#endif // ON_PI
 	
 	return statsV;
+}
+
+void Minion::testWrite(char *data) {
+
 }

@@ -10,7 +10,7 @@
 
 #include "listen.hpp"
 #include "threader.hpp"
-//#include "hardware.hpp"
+#include "minion.hpp"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -30,6 +30,7 @@ Commander	commander;
 
 //extern Filer	filer;
 extern Listener	listener;
+extern Minion minion;
 
 void Commander::setupCommander() {
 	
@@ -75,11 +76,18 @@ void Commander::serviceCommand( char *command, int socket ) {	// Main command de
 	switch ( first ) {
 			
 		case 'A':
-		case 'a':
+		case 'a': {
+			char *readData = minion.testRead();
+			syslog(LOG_NOTICE, "Read data: %s", readData );
+			free( readData );
+		}
 			break;
 
 		case 'B':
-		case 'b':
+		case 'b': {
+			memcpy( msg, "testWrite", 9 );
+			minion.testWrite( msg );
+		}
 			break;
 
 		case 'C':

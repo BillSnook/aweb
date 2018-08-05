@@ -24,11 +24,15 @@ class Minion {
 
 public:
 	explicit Minion();
-	
+
+	bool setupMinion( int i2CAddr );
+	bool resetMinion();
+
 	int getI2CReg( int reg );
 	void putI2CReg( int reg, int newValue );
 	
-	char *getUPS2();
+	char *testRead();
+	void testWrite(char *data);
 
 };
 

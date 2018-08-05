@@ -31,6 +31,8 @@ Threader	threader;
 
 Listener	listener;
 Sender		sender;
+Minion		minion;
+
 
 bool		becomeDaemon;
 bool		ready;
@@ -119,7 +121,8 @@ int main(int argc, const char * argv[]) {
 	threader.setupThreader();
 	
 #ifdef ON_PI
-	Minion minion = Minion();
+	minion = Minion();
+	bool result = minion.setupMinion( 8 );
 //	char *pStatus = minion.getUPS2();
 //	syslog(LOG_NOTICE, "Minion status: %s", pStatus );
 //	free( pStatus );
