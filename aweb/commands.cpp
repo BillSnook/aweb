@@ -79,6 +79,7 @@ void Commander::serviceCommand( char *command, int socket ) {	// Main command de
 		case 'a': {
 			int data = minion.testRead();
 			syslog(LOG_NOTICE, "Read data: %d", data );
+			usleep(1000000);
 		}
 			break;
 
@@ -86,6 +87,7 @@ void Commander::serviceCommand( char *command, int socket ) {	// Main command de
 		case 'b': {
 			minion.testWrite( 0x42 );
 			syslog(LOG_NOTICE, "Wrote data" );
+			usleep(1000000);
 		}
 			break;
 
