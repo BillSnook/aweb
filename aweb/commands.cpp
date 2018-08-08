@@ -72,7 +72,7 @@ void Commander::serviceCommand( char *command, int socket ) {	// Main command de
 
 	char *msg = (char *)malloc( 1024 );
 	memset( msg, 0, 1024 );
-//	memcpy( msg, "\nAck\n", 5 );
+	memcpy( msg, "\nAck\n", 5 );
 	switch ( first ) {
 			
 		case 'A':
@@ -85,7 +85,7 @@ void Commander::serviceCommand( char *command, int socket ) {	// Main command de
 
 		case 'B':
 		case 'b': {
-			minion.testWrite( 0x42 );
+			minion.testWrite( 0x44 );
 			syslog(LOG_NOTICE, "Wrote data" );
 			usleep(1000000);
 		}

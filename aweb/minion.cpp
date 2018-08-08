@@ -47,12 +47,12 @@ bool Minion::setupMinion( int i2cAddr ) {
 	char *filename = (char*)"/dev/i2c-1";
 	if ((file_i2c = open(filename, O_RDWR)) < 0) {
 		//ERROR HANDLING: you can check errno to see what went wrong
-		printf("Failed to open the i2c bus");
+		syslog(LOG_NOTICE, "Failed to open the i2c bus");
 		return false;
 	}
 	
 	if (ioctl(file_i2c, I2C_SLAVE, pi2c) < 0) {
-		printf("Failed to acquire bus access and/or talk to slave.\n");
+		syslog(LOG_NOTICE, "Failed to acquire bus access and/or talk to slave.");
 		//ERROR HANDLING; you can check errno to see what went wrong
 		return false;
 	}
@@ -88,10 +88,10 @@ int Minion::getI2CReg() {
 	if (read(file_i2c, buffer, length) != length) {		//read() returns the number of bytes actually read, if it doesn't match then an error occurred (e.g. no response from the device)
 		
 		//ERROR HANDLING: i2c transaction failed
-		printf("Failed to read from the i2c bus.\n");
+		syslog(LOG_NOTICE, "Failed to read from the i2c bus.\n");
 		return -1;
 	} else {
-		printf("Data read: %s\n", buffer);
+		syslog(LOG_NOTICE, "Data read: %s\n", buffer);
 		return buffer[0];
 	}
 #else	// Else not ON_PI
@@ -118,7 +118,7 @@ void Minion::putI2CReg( int newValue ) {
 	if (write(file_i2c, buffer, length) != length) {		//write() returns the number of bytes actually written, if it doesn't match then an error occurred (e.g. no response from the device)
 		
 		/* ERROR HANDLING: i2c transaction failed */
-		printf("Failed to write to the i2c bus.\n");
+		syslog(LOG_NOTICE, "Failed to write to the i2c bus.");
 	}
 #endif  // ON_PI
 
